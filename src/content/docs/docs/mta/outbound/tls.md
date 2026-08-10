@@ -56,6 +56,8 @@ The [`allowInvalidCerts`](/docs/ref/object/mta-tls-strategy#allowinvalidcerts) f
 
 Some remote hosts have certificates that do not match their hostname or are otherwise invalid. Setting `allowInvalidCerts` to `true` lets Stalwart connect anyway, but the security implications must be weighed: accepting invalid certificates opens the connection to man-in-the-middle attacks. The recommended setting is `false` unless there is a specific, monitored reason to relax it.
 
+This field is ignored for recipient domains publishing an [MTA-STS](/docs/mta/transport-security/mta-sts) policy in `enforce` mode, and for hosts validated through [DANE](/docs/mta/transport-security/dane). Certificates are always verified in those cases, whatever the selected strategy says.
+
 ## Timeouts
 
 Timeouts for TLS-related operations are governed by [`tlsTimeout`](/docs/ref/object/mta-tls-strategy#tlstimeout) (maximum time to wait for the TLS handshake to complete, default 3 minutes) and [`mtaStsTimeout`](/docs/ref/object/mta-tls-strategy#mtaststimeout) (maximum time to wait for the MTA-STS policy lookup, default 5 minutes):

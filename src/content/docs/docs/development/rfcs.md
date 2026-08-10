@@ -56,8 +56,11 @@ The following RFCs are implemented by Stalwart.
 - [RFC 8457 - "$Important" Keyword and "\Important" Special-Use Attribute](https://datatracker.ietf.org/doc/html/rfc8457)
 - [RFC 8970 - Message Preview Generation](https://datatracker.ietf.org/doc/html/rfc8970)
 - [RFC 9208 - IMAP QUOTA Extension](https://datatracker.ietf.org/doc/html/rfc9208)
+- [RFC 9586 - IMAP Extension for Using and Returning Unique Identifiers (UIDs) Only](https://datatracker.ietf.org/doc/html/rfc9586)
 - [RFC 9698 - The JMAPACCESS Extension for IMAP](https://datatracker.ietf.org/doc/html/rfc9698)
+- [RFC 9738 - IMAP MESSAGELIMIT Extension](https://datatracker.ietf.org/doc/html/rfc9738)
 - [RFC 9979 - Registration of further IMAP/JMAP keywords and mailbox name attributes](https://datatracker.ietf.org/doc/html/rfc9979)
+- [RFC 10022 - IMAP UIDBATCHES Extension](https://datatracker.ietf.org/doc/html/rfc10022)
 - [draft-ietf-mailmaint-imap-objectid-bis-04 - IMAP Extension for Object Identifiers](https://datatracker.ietf.org/doc/draft-ietf-mailmaint-imap-objectid-bis/)
 
 ### POP3
@@ -243,6 +246,7 @@ The following RFCs are implemented by Stalwart.
 - [RFC 4331 - Quota and Size Properties for Distributed Authoring and Versioning (DAV) Collections](https://datatracker.ietf.org/doc/html/rfc4331)
 - [RFC 5397 - WebDAV Current Principal Extension](https://datatracker.ietf.org/doc/html/rfc5397)
 - [RFC 8144 - Use of the Prefer Header Field in Web Distributed Authoring and Versioning (WebDAV)](https://datatracker.ietf.org/doc/html/rfc8144)
+- [RFC 7233 - Hypertext Transfer Protocol (HTTP/1.1): Range Requests](https://datatracker.ietf.org/doc/html/rfc7233)
 - [RFC 4791 - Calendaring Extensions to WebDAV (CalDAV)](https://datatracker.ietf.org/doc/html/rfc4791)
 - [RFC 7809 - Calendaring Extensions to WebDAV (CalDAV) Time Zones by Reference](https://datatracker.ietf.org/doc/html/rfc7809)
 - [RFC 6638 - Scheduling Extensions to CalDAV](https://datatracker.ietf.org/doc/html/rfc6638)

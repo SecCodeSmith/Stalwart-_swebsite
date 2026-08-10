@@ -11,6 +11,7 @@ Variables available in expression contexts that reference `SpamUrlVariable`.
 | Variable | Description |
 |---|---|
 | `url` | url |
+| `url_original` | url_original |
 | `value` | value |
 | `path_query` | path_query |
 | `path` | path |

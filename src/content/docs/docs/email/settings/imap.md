@@ -9,6 +9,40 @@ IMAP protocol settings cover request handling, authentication, timeouts, and rat
 
 The [`maxRequestSize`](/docs/ref/object/imap#maxrequestsize) field sets the maximum size of an IMAP request that the server will accept, in bytes. Requests larger than this limit are rejected. The default is `52428800` (50 MB).
 
+## Message limits
+
+Two fields bound how many messages a single IMAP command may process. Both are announced to clients through the [MESSAGELIMIT extension](https://www.rfc-editor.org/rfc/rfc9738.html), so a client that implements it can page through large mailboxes instead of being cut off:
+
+- [`maxMessagesPerCommand`](/docs/ref/object/imap#maxmessagespercommand): announced as `MESSAGELIMIT` and applied to `FETCH`, `SEARCH`, `STORE`, `MOVE` and `UID EXPUNGE`. When a command exceeds it, the highest UIDs are processed and the tagged `OK` carries a `MESSAGELIMIT` response code naming the lowest UID that was handled. Default `1000000`.
+- [`maxMessagesPerSave`](/docs/ref/object/imap#maxmessagespersave): announced as `SAVELIMIT` and applied to `COPY` and `APPEND`. These commands are atomic, so exceeding the limit stores nothing and returns a tagged `NO`. Default `1000000`.
+
+Both default to one million messages, which is above any realistic mailbox, so the limits act as a safety net rather than a policy. Lowering them is safe only for clients that implement RFC 9738. Clients that do not will silently receive partial results from `FETCH` and `SEARCH`, and will see `COPY` and `APPEND` fail outright, so reduce these values only when a specific workload requires it. `EXPUNGE` and `CLOSE` are never limited.
+
+Example:
+
+```json
+{
+  "maxMessagesPerCommand": 1000000,
+  "maxMessagesPerSave": 1000000
+}
+```
+
+## UID batches
+
+The [UIDBATCHES extension](https://www.rfc-editor.org/rfc/rfc10022.html) lets a client ask the server to split the selected mailbox into equally sized batches and return the UID range covering each one, which is how a client paginates a large mailbox without relying on message sequence numbers. Two fields bound what may be requested:
+
+- [`minUidBatchSize`](/docs/ref/object/imap#minuidbatchsize): smallest batch size a client may ask for. Smaller requests are rejected with a `TOOFEW` response code. Default `500`, which is the minimum the specification requires servers to support. It also prevents clients from reconstructing sequence numbers when `UIDONLY` is in effect, so raising it is safe but lowering it is discouraged.
+- [`maxUidBatches`](/docs/ref/object/imap#maxuidbatches): maximum number of UID ranges returned by a single command. Wider requests are rejected with a `TOOMANY` response code. Default `10000`, which covers a mailbox of five million messages at the default minimum batch size.
+
+Example:
+
+```json
+{
+  "minUidBatchSize": 500,
+  "maxUidBatches": 10000
+}
+```
+
 ## Authentication
 
 Two fields on the Imap singleton control IMAP and POP3 authentication behaviour:

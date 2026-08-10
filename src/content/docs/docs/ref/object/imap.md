@@ -67,6 +67,34 @@ This object can be configured from the [WebUI](/docs/management/webui/) under <s
 > Time a connection can stay idle in the IMAP IDLE state before the server breaks the connection
 
 
+##### `maxMessagesPerCommand`
+
+> Type: <code>UnsignedInt</code> · default: `1000000` · min: 1000
+>
+> Maximum number of messages processed by a single FETCH, SEARCH, STORE, MOVE or UID EXPUNGE command, announced to clients through the MESSAGELIMIT capability. Lowering this truncates results for clients that do not implement RFC 9738
+
+
+##### `minUidBatchSize`
+
+> Type: <code>UnsignedInt</code> · default: `500` · min: 1 · max: 500
+>
+> Smallest batch size a client may ask for in a UIDBATCHES command; smaller requests are rejected with a TOOFEW response code. Cannot exceed 500, which is the batch size every server is required to support
+
+
+##### `maxUidBatches`
+
+> Type: <code>UnsignedInt</code> · default: `10000` · min: 1
+>
+> Maximum number of UID ranges returned by a single UIDBATCHES command; wider requests are rejected with a TOOMANY response code
+
+
+##### `maxMessagesPerSave`
+
+> Type: <code>UnsignedInt</code> · default: `1000000` · min: 1000
+>
+> Maximum number of messages accepted by a single COPY or APPEND command, announced to clients through the SAVELIMIT capability. These commands are atomic, so exceeding the limit stores nothing; keep it at or above the MESSAGELIMIT value
+
+
 
 ## JMAP API
 
