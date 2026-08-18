@@ -41,6 +41,13 @@ This object can be configured from the [WebUI](/docs/management/webui/) under <s
 > Available variables: [`MtaRcptDomainVariable`](/docs/ref/expression/variable/mta-rcpt-domain-variable).
 
 
+##### `inboundReportMaxSize`
+
+> Type: <code>Integer</code> · default: `26214400` · min: 1024
+>
+> Maximum size of inbound reports to be intercepted and analyzed, in bytes. Reports larger than this size will be ignored
+
+
 
 ## JMAP API
 

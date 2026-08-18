@@ -34,9 +34,9 @@ RocksDB
 
 ##### `bufferSize`
 
-> Type: <code>Size</code> · default: `134217728` · max: 1073741824 · min: 8192
+> Type: <code>Size</code> · default: `134217728` · max: 4294967296 · min: 8388608
 >
-> Size of the write buffer in bytes, used to batch writes to the store
+> Total amount of memory shared by the write buffers (memtables) of every column family. Higher values batch more writes in memory before they are flushed to disk
 
 
 ##### `poolWorkers`
@@ -44,6 +44,13 @@ RocksDB
 > Type: <code>UnsignedInt?</code> · max: 64 · min: 1
 >
 > Number of worker threads to use for the store, defaults to the number of cores
+
+
+##### `cacheSize`
+
+> Type: <code>Size</code> · default: `134217728` · max: 17179869184 · min: 8388608
+>
+> Total amount of memory shared by the block caches of every column family, used to cache data blocks, indexes and bloom filters read from disk
 
 
 

@@ -144,10 +144,12 @@ Every metric Stalwart collects is listed below, grouped by subsystem. Each metri
 | `dkim.signature-tag-unexpected` | `count` | DKIM2 signature unexpected tag |
 | `dkim.sequence-gap` | `count` | DKIM2 sequence gap |
 | `dkim.sequence-overflow` | `count` | DKIM2 sequence overflow |
+| `dkim.chain-too-long` | `count` | DKIM2 chain too long |
 | `dkim.mail-from-mismatch` | `count` | DKIM2 MAIL FROM mismatch |
 | `dkim.rcpt-to-mismatch` | `count` | DKIM2 RCPT TO mismatch |
 | `dkim.mail-from-domain-mismatch` | `count` | DKIM2 MAIL FROM domain mismatch |
 | `dkim.next-domain-mismatch` | `count` | DKIM2 next domain mismatch |
+| `dkim.custody-break` | `count` | DKIM2 custody break |
 | `dkim.public-key-fetch` | `count` | DKIM2 public key fetch error |
 | `dkim.public-key-missing` | `count` | DKIM2 public key missing |
 | `dkim.public-key-multiple` | `count` | DKIM2 multiple public keys |

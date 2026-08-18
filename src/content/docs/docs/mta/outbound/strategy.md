@@ -25,7 +25,7 @@ Delivery behaviour is governed by four fields on the [MtaOutboundStrategy](/docs
 - [`connection`](/docs/ref/object/mta-outbound-strategy#connection): expression selecting the connection strategy name, resolved to an [MtaConnectionStrategy](/docs/ref/object/mta-connection-strategy) object.
 - [`tls`](/docs/ref/object/mta-outbound-strategy#tls): expression selecting the TLS strategy name, resolved to an [MtaTlsStrategy](/docs/ref/object/mta-tls-strategy) object.
 
-Each expression is evaluated for every recipient in a message. They have access to a wide set of [variables](/docs/configuration/variables#mta-variables) describing the message, its origin, recipients, delivery status, and more, so expressions can match against domain names, message metadata, delivery conditions, or error states. A named strategy object with the returned name must exist; if it does not, delivery fails.
+Each expression is evaluated for every recipient in a message. They have access to a wide set of [variables](/docs/configuration/variables#mta-variables) describing the message, its origin, recipients, delivery status, and more, so expressions can match against domain names, message metadata, delivery conditions, or error states. A named strategy object with the returned name must exist. If it does not, delivery does not fail: Stalwart logs an `smtp.id-not-found` warning and falls back to a built-in default (route `mx`, a 2 minute to 2 hour retry schedule expiring after 5 days on the `default` virtual queue, optional TLS, and default connection timeouts). Since that fallback silently replaces the policy you configured, treat these warnings as configuration errors rather than informational messages.
 
 ## Example
 
