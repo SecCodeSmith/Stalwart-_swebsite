@@ -208,10 +208,12 @@ Metrics reported alongside events are listed on the [Metrics](/docs/ref/metrics)
 | `dkim.signature-tag-unexpected` | `debug` | DKIM2 signature unexpected tag | A DKIM2-Signature contains a tag that is not permitted in this context. |
 | `dkim.sequence-gap` | `debug` | DKIM2 sequence gap | The DKIM2 instance sequence numbering has a gap, indicating a missing hop in the chain. |
 | `dkim.sequence-overflow` | `debug` | DKIM2 sequence overflow | The DKIM2 instance sequence numbering would overflow the permitted range. |
+| `dkim.chain-too-long` | `debug` | DKIM2 chain too long | The message carries more DKIM2 header fields than the server is willing to evaluate, so the chain was rejected without full verification. |
 | `dkim.mail-from-mismatch` | `debug` | DKIM2 MAIL FROM mismatch | The DKIM2-Signature MAIL FROM address does not match the envelope sender. |
 | `dkim.rcpt-to-mismatch` | `debug` | DKIM2 RCPT TO mismatch | The DKIM2-Signature RCPT TO address does not match the envelope recipient. |
 | `dkim.mail-from-domain-mismatch` | `debug` | DKIM2 MAIL FROM domain mismatch | The DKIM2-Signature MAIL FROM domain does not match the signing domain (d=). |
 | `dkim.next-domain-mismatch` | `debug` | DKIM2 next domain mismatch | The DKIM2-Signature next-domain (nd=) tag does not match the expected forwarding domain. |
+| `dkim.custody-break` | `debug` | DKIM2 custody break | The DKIM2-Signature signing domain (d=) does not match the previous hop's RCPT TO, so the chain of custody between hops is broken. |
 | `dkim.public-key-fetch` | `debug` | DKIM2 public key fetch error | The public key for the DKIM2-Signature could not be fetched from DNS. |
 | `dkim.public-key-missing` | `debug` | DKIM2 public key missing | No public key record exists in DNS for the DKIM2-Signature selector. |
 | `dkim.public-key-multiple` | `debug` | DKIM2 multiple public keys | Multiple public key records were published for the DKIM2-Signature selector; the key is ambiguous. |
@@ -308,6 +310,7 @@ Metrics reported alongside events are listed on the [Metrics](/docs/ref/metrics)
 | `imap.subscribe` | `debug` | IMAP SUBSCRIBE command | Client subscribed to a mailbox |
 | `imap.unsubscribe` | `debug` | IMAP UNSUBSCRIBE command | Client unsubscribed from a mailbox |
 | `imap.thread` | `debug` | IMAP THREAD command | Client requested message threads |
+| `imap.uid-batches` | `debug` | IMAP UIDBATCHES command | Client requested the UID ranges that split the selected mailbox into equally sized batches |
 | `imap.get-quota` | `debug` | IMAP GETQUOTA command | Client requested mailbox quota |
 | `imap.error` | `debug` | IMAP error occurred | An error occurred during an IMAP command |
 | `imap.raw-input` | `trace` | Raw IMAP input received | Raw bytes received from the IMAP client; logged at trace level for low-level IMAP session debugging. |

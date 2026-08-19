@@ -23,7 +23,13 @@ By default the importer reads the mailbox of the signed-in identity. A different
 
 ## Surface selection
 
-The data types imported can be narrowed with `--objects`, a comma-separated list drawn from `mail`, `calendar` and `contacts`; the default imports all three. The body representation requested for calendar events is controlled by `--event-body-format`, which accepts `text` (the default) or `html`.
+The data imported can be narrowed with `--objects`, a comma-separated list drawn from `mail`, `calendar` and `contacts`; the default imports all three. The names are case-insensitive, surrounding whitespace is ignored, and repeating a name has no further effect.
+
+These three names are surfaces, not JMAP type names: `mail` covers mail folders and the messages in them, `calendar` covers calendars and their events, and `contacts` covers address books and their cards. A surface is always imported whole, so a single type inside one (events without their calendars, say) cannot be selected on its own, and JMAP type names such as `contactcard` or `mailbox` are rejected. Any name outside the three is refused with a usage error that lists the valid ones.
+
+With `--mailbox-kind archive` only `mail` is imported: the In-Place Archive holds no calendars or contacts, so those two surfaces are skipped for that run whatever `--objects` asks for.
+
+The body representation requested for calendar events is controlled by `--event-body-format`, which accepts `text` (the default) or `html`.
 
 ## Throughput tuning
 

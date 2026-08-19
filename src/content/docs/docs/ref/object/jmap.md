@@ -118,9 +118,9 @@ This object can be configured from the [WebUI](/docs/management/webui/) under <s
 
 ##### `uploadTtl`
 
-> Type: <code>Duration</code> · default: `3600000`
+> Type: <code>Duration</code> · default: `3600000` · min: 1000
 >
-> Specifies the Time-To-Live (TTL) for each uploaded file, after which the file is deleted from temporary storage
+> Specifies the Time-To-Live (TTL) for each uploaded file, after which the file is deleted from temporary storage. Set a long duration to effectively keep uploads until they are referenced
 
 
 ##### `eventSourceThrottle`

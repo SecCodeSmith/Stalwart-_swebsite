@@ -34,12 +34,12 @@ For example:
   "timeout": 300000,
   "maxSize": 104857600,
   "asnUrls": {
-    "https://cdn.jsdelivr.net/npm/@ip-location-db/asn/asn-ipv4.csv": true,
-    "https://cdn.jsdelivr.net/npm/@ip-location-db/asn/asn-ipv6.csv": true
+    "https://github.com/sapics/ip-location-db/releases/download/latest/origin-asn-ipv4.csv": true,
+    "https://github.com/sapics/ip-location-db/releases/download/latest/origin-asn-ipv6.csv": true
   },
   "geoUrls": {
-    "https://cdn.jsdelivr.net/npm/@ip-location-db/geolite2-geo-whois-asn-country/geolite2-geo-whois-asn-country-ipv4.csv": true,
-    "https://cdn.jsdelivr.net/npm/@ip-location-db/geolite2-geo-whois-asn-country/geolite2-geo-whois-asn-country-ipv6.csv": true
+    "https://github.com/sapics/ip-location-db/releases/download/latest/user-country-ipv4.csv": true,
+    "https://github.com/sapics/ip-location-db/releases/download/latest/user-country-ipv6.csv": true
   },
   "httpAuth": {"@type": "Unauthenticated"}
 }
